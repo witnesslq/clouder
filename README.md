@@ -2,18 +2,22 @@
 大数据云计算学习
 
 #sqoop 封装 sqoopExt脚本
-  需求:<br/>
-  为了方便开发和维护，开发一个可配置的工具命令sqoopExt。<br/>
-  具体实现思路:<br/>
-    1、Mysql里建一个配置表，配置每个需要抽取的作业信息；<br/>
-    2、Java读Mysql配置表生成opt文件，通过Process类执行 ：<br/>
-      sqoop --options-file  aa.opt<br/>
-    3、执行方式：<br/>
-      sqoopExt -date 2015-08-28            -- 抽取全部表<br/>
-      sqoopExt -task 1 -date 2015-08-28    --抽取ID为1的表 <br/>
+    需求:
+        为了方便开发和维护，开发一个可配置的工具命令sqoopExt
+    具体实现思路:
+        1、Mysql里建一个配置表，配置每个需要抽取的作业信息;
+        2、Java读Mysql配置表生成opt文件，通过Process类执行
+          sqoop --options-file  aa.opt<br/>
+        3、执行方式：<br/>
+          sqoopExt -date 2015-08-28            -- 抽取全部表
+          sqoopExt -task 1 -date 2015-08-28    --抽取ID为1的表
 
 #common 工程封装一些工具类
-
+    DBUtil jdbc数据库连接工具类
+    FileUtils 文件操作工具类
+    ParseArgs java main方法参数map封装
+    Utils   根据入参替换变量
+    
 #hive 工程
     ##udf 用户自定义函数封装
         GetActID
