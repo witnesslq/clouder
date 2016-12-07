@@ -1,4 +1,4 @@
-package com.lionxxw.clouder.hive.mysql2hive;
+package com.lionxxw.clouder.hive.hive2mysql;
 
 import com.lionxxw.clouder.utils.ParseArgs;
 import com.lionxxw.clouder.utils.Utils;

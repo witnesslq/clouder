@@ -1,4 +1,4 @@
-package com.lionxxw.clouder.hive.mysql2hive;
+package com.lionxxw.clouder.hive.hive2mysql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
