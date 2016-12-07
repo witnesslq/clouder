@@ -1,18 +1,15 @@
 package com.lionxxw.clouder.utils;
 
-import com.lionxxw.clouder.bean.SqoopParams;
-import com.lionxxw.clouder.sqoop.GenerateOptFile;
-
 import java.lang.reflect.Field;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DBUtil {
-	private static final String URL = "jdbc:mysql://10.1.60.43:3306/sqoop";
-	private static final String USER = "root";
-	private static final String PWD = "123456";
-	private static Connection conn = null;
+	protected static final String URL = "jdbc:mysql://10.1.60.43:3306/sqoop";
+	protected static final String USER = "root";
+	protected static final String PWD = "123456";
+	protected static Connection conn = null;
 	
 	static {
 		try {
@@ -64,29 +61,5 @@ public class DBUtil {
 			list.add(obj);
 		}
 		return list;
-	}
-	
-	public static void main(String[] args) throws Exception {
-		Connection conn = DriverManager.getConnection(URL, USER, PWD);
-		Statement st = conn.createStatement();
-		ResultSet rs = st.executeQuery("select * from task_job");
-		List list = populate(rs, SqoopParams.class);
-		for(int i = 0 ; i<list.size() ; i++){
-			SqoopParams params = (SqoopParams) list.get(i);
-			System.out.println(params.toString());
-			GenerateOptFile.generate(params);
-		}
-	}
-
-	public static List<SqoopParams> queryTaskJobByParam(ParseArgs args) throws Exception {
-		Connection conn = DriverManager.getConnection(URL, USER, PWD);
-		Statement st = conn.createStatement();
-		ResultSet rs;
-		if (args.getMap().containsKey("task")){
-			rs = st.executeQuery("select * from task_job where id ="+args.getMap().get("task"));
-		}else{
-			rs = st.executeQuery("select * from task_job");
-		}
-		return populate(rs, SqoopParams.class);
 	}
 }

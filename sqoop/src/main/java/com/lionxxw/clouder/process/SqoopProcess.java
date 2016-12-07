@@ -2,7 +2,7 @@ package com.lionxxw.clouder.process;
 
 import com.lionxxw.clouder.bean.SqoopParams;
 import com.lionxxw.clouder.sqoop.GenerateOptFile;
-import com.lionxxw.clouder.utils.DBUtil;
+import com.lionxxw.clouder.utils.MyDBUtil;
 import com.lionxxw.clouder.utils.ParseArgs;
 import com.lionxxw.clouder.utils.Utils;
 
@@ -28,7 +28,7 @@ public class SqoopProcess {
     public static void main(String[] args) throws Exception {
         //首个参数以外的其他参数，存到Map里
         ParseArgs parse = new ParseArgs(args);
-        List<SqoopParams> sqoopParamses = DBUtil.queryTaskJobByParam(parse);
+        List<SqoopParams> sqoopParamses = MyDBUtil.queryTaskJobByParam(parse);
         if (null != sqoopParamses && sqoopParamses.size() > 0){
             for (SqoopParams params : sqoopParamses){
                 if (null != params.getTarget_where()){
